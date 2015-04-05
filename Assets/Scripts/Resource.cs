@@ -14,7 +14,7 @@ public class Resource : MonoBehaviour {
 	void Update () {
         if (health <= 0)
         {
-            Destroy(transform);
+            Destroy(gameObject);
             return;
         }
 
