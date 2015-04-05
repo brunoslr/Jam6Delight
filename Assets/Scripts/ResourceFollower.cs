@@ -16,6 +16,13 @@ public class ResourceFollower : MonoBehaviour {
     }
 
 	void Update () {
+        if (health <= 0)
+        {
+            Destroy(transform);
+            return;
+        }
+        
+        
         UpdateTarget();
         
         if (target != null)
@@ -23,6 +30,8 @@ public class ResourceFollower : MonoBehaviour {
             MoveTowardsTarget();
             CheckCollision();
         }
+
+        transform.localScale = Vector3.one * health;
 	}
 
     void UpdateTarget()
@@ -61,6 +70,16 @@ public class ResourceFollower : MonoBehaviour {
     }
 
     void UpdateHealth(Transform other) {
+        if (other.tag == "Resource")
+        {
+            health += 0.1f;
+        }
 
+        other.SendMessage("Hit");
+    }
+
+    void Hit()
+    {
+        health -= 0.1f;
     }
 }
