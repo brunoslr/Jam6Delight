@@ -27,9 +27,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 453210}
-  - 212: {fileID: 21253210}
+  - 212: {fileID: 21262864}
   m_Layer: 0
-  m_Name: woman_04
+  m_Name: SpriteRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d31cf8485c2950b408cc968cd1b6e7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &21253210
+--- !u!212 &21262864
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -130,7 +130,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 802881bbd34a4494db738c25e084c400, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
