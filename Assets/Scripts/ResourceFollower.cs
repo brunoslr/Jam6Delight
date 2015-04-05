@@ -18,7 +18,7 @@ public class ResourceFollower : MonoBehaviour {
 	void Update () {
         if (health <= 0)
         {
-            Destroy(transform);
+            Destroy(gameObject);
             return;
         }
         
@@ -31,6 +31,7 @@ public class ResourceFollower : MonoBehaviour {
             CheckCollision();
         }
 
+        health -= 0.005f;
         transform.localScale = Vector3.one * health;
 	}
 
