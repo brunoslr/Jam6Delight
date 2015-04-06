@@ -6,6 +6,9 @@ public class ResourceFollower : MonoBehaviour {
     Transform resourceContainer;
     Transform boyzContainer;
     Transform target;
+    AudioManager audioManager;
+
+    Flock flock;
 
     float health = 1;
 
@@ -13,12 +16,16 @@ public class ResourceFollower : MonoBehaviour {
     {
         resourceContainer = GameObject.Find("Resources").transform;
         boyzContainer = GameObject.Find("Boyz").transform;
+        audioManager = GameObject.Find("AudioManagerPrefab").GetComponent<AudioManager>();
+
+        flock = GetComponent<Flock>();
     }
 
 	void Update () {
         if (health <= 0)
         {
             Destroy(gameObject);
+            audioManager.setLevel(audioManager.displayedLevel + 1);
             return;
         }
         
@@ -33,6 +40,16 @@ public class ResourceFollower : MonoBehaviour {
 
         health -= 0.005f;
         transform.localScale = Vector3.one * health;
+
+        var count = flock.boids.Count;
+        var desired = health * 5;
+        Debug.Log(desired);
+
+
+        if (count > desired)
+        {
+            flock.DestroyBoid();
+        }
 	}
 
     void UpdateTarget()
@@ -52,7 +69,7 @@ public class ResourceFollower : MonoBehaviour {
     void MoveTowardsTarget()
     {
         var dir = (target.position - transform.position).normalized;
-        transform.position = transform.position + (dir * 0.1f);
+        transform.position = transform.position + (dir * 0.05f);
     }
 
     void CheckCollision()
@@ -74,6 +91,14 @@ public class ResourceFollower : MonoBehaviour {
         if (other.tag == "Resource")
         {
             health += 0.1f;
+
+            var count = flock.boids.Count;
+            var desired = health * 5;
+
+            if (count < desired)
+            {
+                flock.SpawnBoid();
+            }
         }
 
         other.SendMessage("Hit");
@@ -82,5 +107,6 @@ public class ResourceFollower : MonoBehaviour {
     void Hit()
     {
         health -= 0.1f;
+
     }
 }

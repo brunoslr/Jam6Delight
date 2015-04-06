@@ -4,7 +4,7 @@ using System.Collections;
 public class AudioComponent : MonoBehaviour {
 	public AudioSource source;
 	public float volume;
-	public const float CHANGE = 0.004f;
+	public const float CHANGE = 0.0012f;
 	void Start(){
 		source = gameObject.GetComponent<AudioSource>();
 	}

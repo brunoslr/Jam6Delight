@@ -71,8 +71,8 @@ public class AudioManager : MonoBehaviour {
 		else if(level==2){
 			setComponentVolume(components[0],1.0f);
 			setComponentVolume(components[1],1.0f);
-			setComponentVolume(components[2],1.0f);
-			setComponentVolume(components[3],1.0f);
+			setComponentVolume(components[2],0.8f);
+			setComponentVolume(components[3],0.35f);
 		}
 	}
 
