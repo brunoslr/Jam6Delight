@@ -4,6 +4,7 @@ using System.Collections;
 public class Resource : MonoBehaviour {
 
     private float health = 1;
+    bool wasHit = false;
 
 	// Use this for initialization
 	void Start () {
@@ -15,7 +16,7 @@ public class Resource : MonoBehaviour {
         if (health <= 0)
         {
             Destroy(gameObject);
-            return;
+
         }
 
         transform.localScale = Vector3.one * health;
@@ -23,6 +24,11 @@ public class Resource : MonoBehaviour {
 
     void Hit()
     {
+        if (!wasHit)
+        {
+            wasHit = true;
+            audio.Play();
+        }
         health -= 0.02f;
     }
 }

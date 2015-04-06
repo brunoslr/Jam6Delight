@@ -9,6 +9,7 @@ public class Score : MonoBehaviour
     private Transform boyz;
     private bool isGameOver;
     private UnityEngine.UI.Text text;
+    private float gameOverTimer;
 
     void Start()
     {
@@ -21,7 +22,19 @@ public class Score : MonoBehaviour
 
 	void Update () 
     {
-        if (isGameOver) { return;  }
+        if (isGameOver) {
+
+            gameOverTimer += Time.deltaTime;
+
+            if (Input.GetMouseButtonDown(0) && gameOverTimer > 1f)
+            {
+                Application.LoadLevel("menuScene");
+            }
+
+
+            return; 
+        
+        }
 
 		time = Time.timeSinceLevelLoad;    
         timeText.text = "Score: " + time.ToString("0.00");
