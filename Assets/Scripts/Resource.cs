@@ -23,6 +23,6 @@ public class Resource : MonoBehaviour {
 
     void Hit()
     {
-        health -= 0.1f;
+        health -= 0.02f;
     }
 }

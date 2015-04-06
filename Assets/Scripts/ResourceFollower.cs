@@ -10,6 +10,7 @@ public class ResourceFollower : MonoBehaviour {
 
     Flock flock;
 
+    float hitTime = 0;
     float health = 1;
 
     void Awake()
@@ -21,11 +22,28 @@ public class ResourceFollower : MonoBehaviour {
         flock = GetComponent<Flock>();
     }
 
+    void UpdateColor(Color color, Transform target)
+    {
+        var spriteRenderer = target.GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer)
+        {
+            spriteRenderer.color = color;
+        }
+
+        foreach (Transform child in target)
+        {
+            UpdateColor(color, child);
+        }
+    }
+
 	void Update () {
         if (health <= 0)
         {
+            flock.Dispose();
             Destroy(gameObject);
             audioManager.setLevel(audioManager.displayedLevel + 1);
+            GameObject.Find("Spawner").GetComponent<ResourceSpawner>().nextCooldown += 0.75f;
             return;
         }
         
@@ -38,17 +56,32 @@ public class ResourceFollower : MonoBehaviour {
             CheckCollision();
         }
 
-        health -= 0.005f;
-        transform.localScale = Vector3.one * health;
+        health -= 0.008f;
+        //transform.localScale = Vector3.one * health;
 
         var count = flock.boids.Count;
         var desired = health * 5;
-        Debug.Log(desired);
 
-
-        if (count > desired)
+        if (count > desired + 1)
         {
             flock.DestroyBoid();
+        }
+
+        if (count < desired)
+        {
+          flock.SpawnBoid();
+        }
+
+        if (hitTime > 0)
+        {
+            hitTime -= Time.deltaTime;
+
+            if (hitTime <= 0)
+            {
+                UpdateColor(Color.white, transform);
+                flock.UpdateColor(Color.white);
+                hitTime = 0;
+            }
         }
 	}
 
@@ -90,15 +123,8 @@ public class ResourceFollower : MonoBehaviour {
     void UpdateHealth(Transform other) {
         if (other.tag == "Resource")
         {
-            health += 0.1f;
+            health += 0.02f;
 
-            var count = flock.boids.Count;
-            var desired = health * 5;
-
-            if (count < desired)
-            {
-                flock.SpawnBoid();
-            }
         }
 
         other.SendMessage("Hit");
@@ -106,7 +132,10 @@ public class ResourceFollower : MonoBehaviour {
 
     void Hit()
     {
-        health -= 0.1f;
+        health -= 0.02f;
+        hitTime = 0.4f;
 
+        UpdateColor(Color.red, transform);
+        flock.UpdateColor(Color.red);
     }
 }

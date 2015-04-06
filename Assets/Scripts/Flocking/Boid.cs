@@ -30,8 +30,8 @@ public class Boid : MonoBehaviour
     public void Flock()
     {
         // Arbitrarily weight these forces
-        var separation = Separate();
-        var alignment = Vector3.zero;// Align();
+        var separation = Separate() * 1.1f;
+        var alignment = Align();
         var cohesion = Cohesion() * 1.05f;
         var follow = Follow() * 1.5f;
 
@@ -139,7 +139,7 @@ public class Boid : MonoBehaviour
         if (steer.sqrMagnitude > 0)
         {
             // Implement Reynolds: Steering = Desired - Velocity
-            steer = (steer.normalized * maxspeed) - vel;
+            steer = (steer.normalized * maxspeed * 0.5f) - vel;
 
             //TODO clamp by maxforce
             steer = Limit(steer, maxforce);
