@@ -2,11 +2,15 @@
 using System.Collections;
 
 public class MainMenu : MonoBehaviour {
-	
+
+	//public AudioClip start;
+    public AudioSource source;
+
 	public void StartGame()
 	{
-	
-		Application.LoadLevel ("MainScene");
+
+        source.Play();	
+        StartCoroutine("LoadTime");
 
 	}
 	
@@ -14,5 +18,12 @@ public class MainMenu : MonoBehaviour {
 	{
 		Application.Quit ();
 	}
+
+    private IEnumerator LoadTime() {
+        print(Time.time);
+        yield return new WaitForSeconds(0.5f);
+        Application.LoadLevel ("MainScene");
+        print(Time.time);
+    }
 
 }
