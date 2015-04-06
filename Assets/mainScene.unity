@@ -73,7 +73,6 @@ NavMeshSettings:
     minRegionArea: 2
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
-    tileSizeHint: 0
   m_NavMesh: {fileID: 0}
 --- !u!1 &62679330
 GameObject:
@@ -1354,6 +1353,53 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: 8a72ffba25c088349984b59bd2159399, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &478100670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 148532, guid: 3ef1ffd1d23ab894c8e8d00940e3d407, type: 2}
+  m_PrefabInternal: {fileID: 1408030431}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 478100672}
+  - 114: {fileID: 478100671}
+  m_Layer: 0
+  m_Name: EasterEggs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &478100671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11448532, guid: 3ef1ffd1d23ab894c8e8d00940e3d407,
+    type: 2}
+  m_PrefabInternal: {fileID: 1408030431}
+  m_GameObject: {fileID: 478100670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f1ecc2dfab4b5943bad169b4684b237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  konamiTimeLimit: 0
+  konami_index: 0
+  konami_activating: 0
+  konami_activated: 0
+  debug: 0
+  pausePrefab: {fileID: 161904, guid: 25e4e40c26468014f99e4a1d52e08c43, type: 2}
+  keys: 
+--- !u!4 &478100672
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 448532, guid: 3ef1ffd1d23ab894c8e8d00940e3d407, type: 2}
+  m_PrefabInternal: {fileID: 1408030431}
+  m_GameObject: {fileID: 478100670}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!1001 &552717135
 Prefab:
   m_ObjectHideFlags: 0
@@ -2054,6 +2100,54 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300018, guid: 8a72ffba25c088349984b59bd2159399, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1001 &1408030431
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 448532, guid: 3ef1ffd1d23ab894c8e8d00940e3d407, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448532, guid: 3ef1ffd1d23ab894c8e8d00940e3d407, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448532, guid: 3ef1ffd1d23ab894c8e8d00940e3d407, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448532, guid: 3ef1ffd1d23ab894c8e8d00940e3d407, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448532, guid: 3ef1ffd1d23ab894c8e8d00940e3d407, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448532, guid: 3ef1ffd1d23ab894c8e8d00940e3d407, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448532, guid: 3ef1ffd1d23ab894c8e8d00940e3d407, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 448532, guid: 3ef1ffd1d23ab894c8e8d00940e3d407, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11448532, guid: 3ef1ffd1d23ab894c8e8d00940e3d407, type: 2}
+      propertyPath: pausePrefab
+      value: 
+      objectReference: {fileID: 161904, guid: 25e4e40c26468014f99e4a1d52e08c43, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 3ef1ffd1d23ab894c8e8d00940e3d407, type: 2}
+  m_RootGameObject: {fileID: 478100670}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &1426184699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2308,8 +2402,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
+  ignoreReversedGraphics: 1
+  blockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2874,7 +2968,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400426, guid: 6fbb9197b2e36e344967ced4a48b2885, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6fbb9197b2e36e344967ced4a48b2885, type: 2}
@@ -2971,9 +3065,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourcePrefab: {fileID: 134156, guid: 686cf96194497e94b998d8121ff357af, type: 2}
   womanSprites:
-  - {fileID: 21300000, guid: 4d0bc0797e2d99e46a707fbce2eb0d2b, type: 3}
-  - {fileID: 21300000, guid: 2a495b35bd3da7045aa18aebbf44bf88, type: 3}
-  - {fileID: 21300000, guid: 9182b5cbab28dde409b8224efaba2e80, type: 3}
   - {fileID: 21300000, guid: 44d49b0956edb794dad1f1b10cd57dc0, type: 3}
   - {fileID: 21300000, guid: 802881bbd34a4494db738c25e084c400, type: 3}
   - {fileID: 21300000, guid: 9bb4d2226aad31f4d810ebeadae3d60d, type: 3}
